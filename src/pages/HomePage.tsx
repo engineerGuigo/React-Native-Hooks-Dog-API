@@ -1,8 +1,16 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {SafeAreaView, Text, Image} from 'react-native';
 
 const HomePage = () => {
-    return <Text>Dogs</Text>;
+    return (
+        <SafeAreaView>
+            <Image source={ require('../../images/vavau.png')}/>
+        </SafeAreaView>
+    );
+};
+
+HomePage.navigationOptions = {
+    headerShown: false,
 };
 
 export default HomePage;
