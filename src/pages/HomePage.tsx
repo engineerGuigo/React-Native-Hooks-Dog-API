@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {SafeAreaView, Text, FlatList, Image, View} from 'react-native';
 import axios from 'axios';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-const HomePage = () => {
+const HomePage = ({navigation}) => {
 
     const [breeds, setBreeds] = useState({});
     axios
@@ -34,10 +35,27 @@ const HomePage = () => {
             justifyContent: 'center'
         }}>
             <View style={{flex: 1}}>
-            <Image source={ require('../../images/vavau.png')}/>
+                <Image source={ require('../../images/vavau.png')}/>
             </View>
-            <View style={{flex: 4}}>
-                <Text>{JSON.stringify(breeds)}</Text>
+            <View style={{flex: 4, flexDirection: 'row'}}>
+                <FlatList
+                    style={{flex: 1}}
+                    data={Object.keys(breeds)}
+                    renderItem={({item}) => {
+                        return (
+                            <TouchableOpacity
+                            style={{
+                                flex: 1,
+                                padding: 10,
+                            }}
+                                onPress={() => {
+                                    navigation.navigate('DogPage');
+                                }}>
+                                <Text>{breeds[item]}</Text>
+                            </TouchableOpacity>
+                        )
+                    }}
+                />
             </View>
         </SafeAreaView>
     );
