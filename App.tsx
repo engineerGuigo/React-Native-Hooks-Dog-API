@@ -1,19 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {createStackNavigator} from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
+import HomePage from './src/pages/HomePage';
+import DogPage from './src/pages/DogPage';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomePage,
+  },
+  DogPage: {
+    screen: DogPage,
   },
 });
+
+export default createAppContainer(AppNavigator);
