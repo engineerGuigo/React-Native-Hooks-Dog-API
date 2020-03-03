@@ -34,10 +34,10 @@ const HomePage = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center'
         }}>
-            <View style={{flex: 1}}>
+            <View style={{flex: 1 , flexDirection: 'row', justifyContent: 'space-around', marginTop: 0, width: 400, maxWidth: '80%', opacity: 0.3}}>
                 <Image source={ require('../../images/vavau.png')}/>
             </View>
-            <View style={{flex: 4, flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row'}}>
                 <FlatList
                     style={{flex: 1}}
                     keyExtractor={(item, index) => {
