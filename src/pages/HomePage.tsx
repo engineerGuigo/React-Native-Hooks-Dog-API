@@ -40,6 +40,9 @@ const HomePage = ({navigation}) => {
             <View style={{flex: 4, flexDirection: 'row'}}>
                 <FlatList
                     style={{flex: 1}}
+                    keyExtractor={(item, index) => {
+                        return 'dog-' + index;
+                    }}
                     data={Object.keys(breeds)}
                     renderItem={({item}) => {
                         return (
@@ -49,9 +52,9 @@ const HomePage = ({navigation}) => {
                                 padding: 10,
                             }}
                                 onPress={() => {
-                                    navigation.navigate('DogPage');
+                                    navigation.navigate('DogPage', {breed: breeds[item]});
                                 }}>
-                                <Text>{breeds[item]}</Text>
+                                <Text style={{fontSize: 30}}>{breeds[item]}</Text>
                             </TouchableOpacity>
                         )
                     }}
